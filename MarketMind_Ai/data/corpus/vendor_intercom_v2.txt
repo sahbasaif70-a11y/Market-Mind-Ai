@@ -1,0 +1,5 @@
+Company: Intercom Resolution Benchmarks 2025
+Published Date: January 2025
+
+Performance Metrics:
+- PLANTED CONTRADICTION: Fin AI Agent resolution rate is reported at 35% for enterprise customer support workflows.

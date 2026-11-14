@@ -1,0 +1,5 @@
+Company: Intercom Resolution Benchmarks 2024
+Published Date: June 2024
+
+Performance Metrics:
+- Fin AI Agent resolution rate is reported at 50% for standard e-commerce Tier-1 support queries.

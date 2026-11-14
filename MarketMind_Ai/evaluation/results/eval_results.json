@@ -1,0 +1,96 @@
+{
+  "total": 15,
+  "passed": 15,
+  "cases": [
+    {
+      "id": "TC01",
+      "prompt": "Research the AI-powered customer support software market, compare pricing for Zendesk and Intercom.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC02",
+      "prompt": "Identify key features and pricing tier limits for Zendesk AI Copilot.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC03",
+      "prompt": "Analyze Intercom Fin AI resolution pricing model and languages supported.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC04",
+      "prompt": "Calculate estimated CAGR and market growth rate for global AI support market through 2028.",
+      "status": "PASSED",
+      "matched_docs": 2
+    },
+    {
+      "id": "TC05",
+      "prompt": "Compare startup recommendations and strategic entry opportunities in AI support.",
+      "status": "PASSED",
+      "matched_docs": 2
+    },
+    {
+      "id": "TC06",
+      "prompt": "What are the primary limitations of Zendesk AI for small startups?",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC07",
+      "prompt": "What is the per-resolution fee structure of Intercom Fin AI?",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC08",
+      "prompt": "Calculate average starting price across Zendesk and Intercom plans.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC09",
+      "prompt": "Identify top 3 industry trends in AI support for 2025.",
+      "status": "PASSED",
+      "matched_docs": 1
+    },
+    {
+      "id": "TC10",
+      "prompt": "Analyze omnichannel capabilities of Zendesk vs Intercom.",
+      "status": "PASSED",
+      "matched_docs": 2
+    },
+    {
+      "id": "TC11",
+      "prompt": "Identify zero-hallucination grounding requirements in enterprise AI support.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC12",
+      "prompt": "Compare Enterprise plan pricing for Zendesk against Intercom Advanced seat pricing.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC13",
+      "prompt": "Analyze CSAT analytics features provided by leading customer support agents.",
+      "status": "PASSED",
+      "matched_docs": 1
+    },
+    {
+      "id": "TC14",
+      "prompt": "Evaluate pay-per-resolution vs seat-based pricing models.",
+      "status": "PASSED",
+      "matched_docs": 3
+    },
+    {
+      "id": "TC15",
+      "prompt": "Provide strategic recommendations for a new AI customer support startup focusing on e-commerce.",
+      "status": "PASSED",
+      "matched_docs": 2
+    }
+  ]
+}

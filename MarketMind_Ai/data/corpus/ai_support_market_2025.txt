@@ -1,0 +1,18 @@
+Report: Global AI-Powered Customer Support Market Overview
+Date: Q1 2025
+Source: MarketMind Research Index
+
+Market Trends:
+1. Transition from simple Decision-Tree Chatbots to Autonomous LLM Agents (e.g. Fin AI, Zendesk AI).
+2. Outcome-based pricing models (charging per successful query resolution rather than per seat).
+3. Demand for zero-hallucination guarantees and strict grounding in company documentation.
+4. Omnichannel integration across WhatsApp, Email, and Web Widgets.
+
+Market Growth:
+- CAGR (Compound Annual Growth Rate): 23.5% (2024 to 2028).
+- Estimated Market Size by 2028: $18.4 Billion.
+
+Key Recommendations for Startups:
+- Focus on niche vertical markets (e.g., Healthcare CS, E-commerce Logistics CS).
+- Offer transparent pricing with hybrid seat + resolution tiers.
+- Provide sub-second latency and zero-code setup.

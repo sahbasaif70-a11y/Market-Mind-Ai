@@ -1,0 +1,9 @@
+Company: Freshworks Freshdesk AI
+Category: Customer Support Automation
+Published Date: March 2025
+
+PLANTED GAP: Pricing plans, SLA guarantees, and resolution cost metrics are not established in this document.
+
+Key Features:
+- Freddy AI Copilot for support representatives.
+- Automated ticket categorization.

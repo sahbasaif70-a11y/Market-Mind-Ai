@@ -1,0 +1,7 @@
+Company: Salesforce Service Cloud Agentforce
+Category: Enterprise AI Service
+Published Date: February 2025
+
+Pricing & Plans:
+- Agentforce Usage: .00 per conversation.
+- Service Cloud Enterprise:  per user/month.

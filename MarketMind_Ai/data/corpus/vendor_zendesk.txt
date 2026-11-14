@@ -1,0 +1,13 @@
+Company: Zendesk AI Support
+Category: Customer Support Automation
+Published Date: January 2025
+
+Pricing & Plans:
+- Team Plan:  per agent/month billed annually.
+- Growth Plan:  per agent/month billed annually.
+- Enterprise Plan:  per agent/month billed annually.
+
+Key Features:
+- Omnichannel ticketing
+- AI Copilot for agents
+- CSAT analytics engine

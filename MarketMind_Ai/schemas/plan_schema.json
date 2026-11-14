@@ -1,0 +1,158 @@
+{
+  "$defs": {
+    "QuestionStatus": {
+      "enum": [
+        "open",
+        "in_progress",
+        "answered",
+        "unanswerable"
+      ],
+      "title": "QuestionStatus",
+      "type": "string"
+    },
+    "RequestAnalysis": {
+      "properties": {
+        "topic": {
+          "description": "Clean, concise research topic without prompt instructions, e.g., E-commerce retention marketing software",
+          "title": "Topic",
+          "type": "string"
+        },
+        "competitors": {
+          "description": "List of validated competitor/entity names explicitly requested",
+          "items": {
+            "type": "string"
+          },
+          "title": "Competitors",
+          "type": "array"
+        },
+        "criteria": {
+          "description": "List of comparison criteria requested",
+          "items": {
+            "type": "string"
+          },
+          "title": "Criteria",
+          "type": "array"
+        },
+        "geographic_scope": {
+          "default": "Global",
+          "description": "Region focus",
+          "title": "Geographic Scope",
+          "type": "string"
+        },
+        "time_sensitive": {
+          "default": true,
+          "description": "Whether query requires recent/current data",
+          "title": "Time Sensitive",
+          "type": "boolean"
+        },
+        "required_evidence_types": {
+          "description": "Required evidence types",
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Evidence Types",
+          "type": "array"
+        },
+        "desired_sections": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Desired Sections",
+          "type": "array"
+        },
+        "industry_segment": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Clean market segment title",
+          "title": "Industry Segment"
+        },
+        "clarified_objective": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Clear objective statement",
+          "title": "Clarified Objective"
+        }
+      },
+      "required": [
+        "topic"
+      ],
+      "title": "RequestAnalysis",
+      "type": "object"
+    },
+    "SubQuestion": {
+      "properties": {
+        "id": {
+          "description": "Unique ID for sub-question, e.g., SQ1",
+          "title": "Id",
+          "type": "string"
+        },
+        "question": {
+          "description": "Clear answerable sub-question",
+          "title": "Question",
+          "type": "string"
+        },
+        "target_entity": {
+          "description": "Company or topic target, e.g., Klaviyo",
+          "title": "Target Entity",
+          "type": "string"
+        },
+        "target_metric": {
+          "description": "Metric sought, e.g., pricing plans, free plan limits, SMS automation features",
+          "title": "Target Metric",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/QuestionStatus",
+          "default": "open"
+        }
+      },
+      "required": [
+        "id",
+        "question",
+        "target_entity",
+        "target_metric"
+      ],
+      "title": "SubQuestion",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "analysis": {
+      "$ref": "#/$defs/RequestAnalysis"
+    },
+    "sub_questions": {
+      "description": "List of targeted sub-questions",
+      "items": {
+        "$ref": "#/$defs/SubQuestion"
+      },
+      "title": "Sub Questions",
+      "type": "array"
+    },
+    "estimated_iterations": {
+      "default": 6,
+      "description": "Estimated iterations needed",
+      "title": "Estimated Iterations",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "analysis",
+    "sub_questions"
+  ],
+  "title": "ResearchPlan",
+  "type": "object"
+}

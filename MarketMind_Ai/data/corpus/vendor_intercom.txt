@@ -1,0 +1,12 @@
+Company: Intercom Fin AI
+Category: Customer Support Automation & AI Agents
+Published Date: February 2025
+
+Pricing & Plans:
+- Essential Plan:  per seat/month.
+- Advanced Plan:  per seat/month.
+- Fin AI Agent Usage Fee: .99 per successful AI resolution.
+
+Key Features:
+- Fin AI Bot resolving up to 50% of support queries autonomously.
+- Proactive Support Messenger.

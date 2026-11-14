@@ -1,0 +1,73 @@
+========================================================================================
+                          MARKETMIND AI ARCHITECTURE DIAGRAM
+========================================================================================
+
+    +-------------------------------------------------------------------------------+
+    |                                 USER INTERFACE                                |
+    |      React + Vite + Tailwind CSS Dashboard / REST Client / CLI Approval       |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v (HTTP POST / API Requests)
+    +-------------------------------------------------------------------------------+
+    |                            FASTAPI BACKEND SERVICE                            |
+    |  - Route Handlers (POST /research, GET /reports, POST /approve, GET /health)   |
+    |  - Request Validation & API Key Security Injection                            |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                        PHASE 2: RESEARCH PLANNER AGENT                        |
+    |  - Request Analysis: Topic Normalization, Competitor & Metric Parsing          |
+    |  - Sub-question Generation: Entity-Criterion Matrix (SQ1..SQn)                 |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                      PHASE 3 & 4: BOUNDED RESEARCH AGENT                      |
+    |  - Plan-Act-Observe Loop (5 Termination Conditions: Iterations, Tool Calls,    |
+    |    Cost Budget, Resolution, Stuck-Loop Detection)                             |
+    |  - Context Slice Windowing (Only Active Sub-Question Slice Passed to Prompt)  |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                        TOOL DISPATCHER & SECURITY GATEWAY                     |
+    |  - Validation -> Authorization -> Rate/Cost Budget -> Execution -> Normalizer |
+    |                                                                               |
+    |   [Tool 1] search_information  <-->  Local Corpus (20 Docs / Gap / Contradiction)|
+    |   [Tool 2] targeted_web_search  <-->  Tavily / Serper / DDGS Live Web Search   |
+    |   [Tool 3] fetch_webpage       <-->  HTML Parser & Text Extractor             |
+    |   [Tool 4] calculate_metric    <-->  Deterministic Math & CAGR Engine         |
+    |   [Tool 5] compare_companies   <-->  Domain-Aware Matrix Builder              |
+    |   [Tool 6] save_research       <-->  Provenance-Grounded Evidence Store       |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                     SOURCE VALIDATOR & RELEVANCE FILTER                       |
+    |  - Entity Matching & Cross-Entity Competitor Site Rejection                    |
+    |  - Domain Credibility Scorer (Rejects Wikipedia, YouTube, Tourism, Spam)      |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                    PHASE 5: SYNTHESIS & QUALITY CONTROL                       |
+    |  - OpenAI GPT-4o-mini LLM Dynamic Synthesis (Executive Summary, Matrix, Trends)|
+    |  - 10-Check Quality Audit Engine (Entity, Criterion, Relevance, Support,      |
+    |    Contradiction, Contamination, Freshness, Completeness)                     |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                        PHASE 6: HUMAN APPROVAL GATE                           |
+    |  - 4 Explicit Outcomes: APPROVE | REJECT | REVISION | EXPORT                 |
+    |  - No Default-Yes; Requires Human Decision                                   |
+    +-------------------------------------------------------------------------------+
+                                            |
+                                            v
+    +-------------------------------------------------------------------------------+
+    |                          PERSISTENCE & REPORT OUTPUTS                         |
+    |  - runs/<run_id>.json (Full State + Evidence Store + Quality Audit + Usage)   |
+    |  - runs/<run_id>_report.md (Rendered Markdown Report)                         |
+    +-------------------------------------------------------------------------------+
+========================================================================================

@@ -1,0 +1,534 @@
+{
+  "$defs": {
+    "CompanyComparison": {
+      "properties": {
+        "company_name": {
+          "title": "Company Name",
+          "type": "string"
+        },
+        "starting_price": {
+          "default": "Not verified in search evidence",
+          "title": "Starting Price",
+          "type": "string"
+        },
+        "pricing_model": {
+          "default": "Not verified in search evidence",
+          "title": "Pricing Model",
+          "type": "string"
+        },
+        "free_plan": {
+          "default": "Not verified in search evidence",
+          "title": "Free Plan",
+          "type": "string"
+        },
+        "target_audience": {
+          "default": "Not verified in search evidence",
+          "title": "Target Audience",
+          "type": "string"
+        },
+        "key_features": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Key Features",
+          "type": "array"
+        },
+        "strengths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Strengths",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "criteria_values": {
+          "additionalProperties": {
+            "$ref": "#/$defs/CriterionComparisonValue"
+          },
+          "description": "Criteria mapped to verified values",
+          "title": "Criteria Values",
+          "type": "object"
+        },
+        "source_urls": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Urls",
+          "type": "array"
+        },
+        "last_verified": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Verified"
+        }
+      },
+      "required": [
+        "company_name"
+      ],
+      "title": "CompanyComparison",
+      "type": "object"
+    },
+    "CriterionComparisonValue": {
+      "properties": {
+        "criterion_name": {
+          "title": "Criterion Name",
+          "type": "string"
+        },
+        "value_text": {
+          "default": "Not verified",
+          "title": "Value Text",
+          "type": "string"
+        },
+        "is_verified": {
+          "default": false,
+          "title": "Is Verified",
+          "type": "boolean"
+        },
+        "billing_period": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Billing Period"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "USD",
+          "title": "Currency"
+        },
+        "usage_limits": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Usage Limits"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "source_urls": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Urls",
+          "type": "array"
+        }
+      },
+      "required": [
+        "criterion_name"
+      ],
+      "title": "CriterionComparisonValue",
+      "type": "object"
+    },
+    "MarketSizingData": {
+      "properties": {
+        "market_definition": {
+          "default": "Global Customer Support Automation Market",
+          "title": "Market Definition",
+          "type": "string"
+        },
+        "geography": {
+          "default": "Global",
+          "title": "Geography",
+          "type": "string"
+        },
+        "base_year": {
+          "default": 2023,
+          "title": "Base Year",
+          "type": "integer"
+        },
+        "base_market_value_usd_billion": {
+          "default": 10.5,
+          "title": "Base Market Value Usd Billion",
+          "type": "number"
+        },
+        "forecast_year": {
+          "default": 2028,
+          "title": "Forecast Year",
+          "type": "integer"
+        },
+        "forecast_market_value_usd_billion": {
+          "default": 32.8,
+          "title": "Forecast Market Value Usd Billion",
+          "type": "number"
+        },
+        "currency_and_units": {
+          "default": "USD Billion",
+          "title": "Currency And Units",
+          "type": "string"
+        },
+        "calculated_cagr_percent": {
+          "default": 25.58,
+          "title": "Calculated Cagr Percent",
+          "type": "number"
+        },
+        "published_cagr_percent": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 21.1,
+          "title": "Published Cagr Percent"
+        },
+        "discrepancy_explanation": {
+          "default": "Discrepancy Disclosure: Calculated 5-year CAGR is 25.58% based on $10.50B (2023) to $32.80B (2028). The published figure of 21.1% CAGR in secondary research reports reflects a 6-year forecast period (2022\u20132028) and broader enterprise conversational AI market definitions.",
+          "title": "Discrepancy Explanation",
+          "type": "string"
+        },
+        "calculated_total_growth_percent": {
+          "default": 212.38,
+          "title": "Calculated Total Growth Percent",
+          "type": "number"
+        },
+        "key_market_drivers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Key Market Drivers",
+          "type": "array"
+        },
+        "source_urls": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Urls",
+          "type": "array"
+        }
+      },
+      "title": "MarketSizingData",
+      "type": "object"
+    },
+    "ProvenanceRecord": {
+      "properties": {
+        "evidence_id": {
+          "default": "EV1",
+          "description": "Unique Evidence ID",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "claim_category": {
+          "default": "market_size",
+          "description": "market_size | calculated_cagr | pricing | product_feature | automation_stat",
+          "title": "Claim Category",
+          "type": "string"
+        },
+        "claim": {
+          "description": "Factual statement or claim",
+          "title": "Claim",
+          "type": "string"
+        },
+        "exact_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Exact numeric or categorical value",
+          "title": "Exact Value"
+        },
+        "source": {
+          "description": "Title or identifier of the source",
+          "title": "Source",
+          "type": "string"
+        },
+        "source_type": {
+          "default": "external_web",
+          "description": "local_document | external_web | calculated | model_inference",
+          "title": "Source Type",
+          "type": "string"
+        },
+        "source_document_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Local filename if local_document",
+          "title": "Source Document Id"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "External web URL (NULL for local_document unless independently verified)",
+          "title": "Source Url"
+        },
+        "extracted_passage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Exact supporting text passage from source",
+          "title": "Extracted Passage"
+        },
+        "publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publication or retrieval date",
+          "title": "Publication Date"
+        },
+        "relevant_period": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "2023-2028",
+          "description": "Market period or scope",
+          "title": "Relevant Period"
+        },
+        "verification_status": {
+          "default": "unverified",
+          "description": "verified_source | verified_calculation | unverified | insufficient_evidence",
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "confidence": {
+          "default": "high",
+          "title": "Confidence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim",
+        "source"
+      ],
+      "title": "ProvenanceRecord",
+      "type": "object"
+    },
+    "QualityAudit": {
+      "properties": {
+        "passed": {
+          "default": false,
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "overall_score": {
+          "default": 0.0,
+          "title": "Overall Score",
+          "type": "number"
+        },
+        "status": {
+          "default": "NEEDS_REVIEW",
+          "title": "Status",
+          "type": "string"
+        },
+        "category_scores": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Category Scores",
+          "type": "object"
+        },
+        "failed_checks": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Failed Checks",
+          "type": "array"
+        },
+        "unsupported_claims_found": {
+          "default": 0,
+          "title": "Unsupported Claims Found",
+          "type": "integer"
+        },
+        "contradictions_found": {
+          "default": 0,
+          "title": "Contradictions Found",
+          "type": "integer"
+        },
+        "audit_notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Audit Notes",
+          "type": "array"
+        }
+      },
+      "title": "QualityAudit",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "title": {
+      "description": "Title of the research report",
+      "title": "Title",
+      "type": "string"
+    },
+    "report_type": {
+      "default": "competitor_comparison",
+      "description": "competitor_comparison | market_sizing | hybrid",
+      "title": "Report Type",
+      "type": "string"
+    },
+    "research_scope_and_methodology": {
+      "default": "Evidence-grounded multi-source research using live web search and local corpus.",
+      "description": "Scope & methodology statement",
+      "title": "Research Scope And Methodology",
+      "type": "string"
+    },
+    "collection_date_utc": {
+      "default": "",
+      "description": "UTC timestamp when research collection occurred",
+      "title": "Collection Date Utc",
+      "type": "string"
+    },
+    "executive_summary": {
+      "description": "High level summary of research findings",
+      "title": "Executive Summary",
+      "type": "string"
+    },
+    "market_overview": {
+      "description": "Overview of current industry landscape and metrics",
+      "title": "Market Overview",
+      "type": "string"
+    },
+    "market_sizing": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MarketSizingData"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Market Sizing, Forecast & Calculated CAGR Data"
+    },
+    "competitor_analysis": {
+      "description": "Detailed competitor comparison matrix",
+      "items": {
+        "$ref": "#/$defs/CompanyComparison"
+      },
+      "title": "Competitor Analysis",
+      "type": "array"
+    },
+    "key_trends": {
+      "description": "Identified market trends",
+      "items": {
+        "type": "string"
+      },
+      "title": "Key Trends",
+      "type": "array"
+    },
+    "strategic_recommendations": {
+      "description": "Actionable recommendations for new entrants/startups",
+      "items": {
+        "type": "string"
+      },
+      "title": "Strategic Recommendations",
+      "type": "array"
+    },
+    "limitations_and_unverified_claims": {
+      "description": "Explicit disclosures of unverified claims or search limitations",
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations And Unverified Claims",
+      "type": "array"
+    },
+    "unresolved_questions": {
+      "description": "Questions where evidence was insufficient",
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Questions",
+      "type": "array"
+    },
+    "provenance": {
+      "description": "Source provenance mapping for every claim",
+      "items": {
+        "$ref": "#/$defs/ProvenanceRecord"
+      },
+      "title": "Provenance",
+      "type": "array"
+    },
+    "quality_audit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/QualityAudit"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "title",
+    "executive_summary",
+    "market_overview",
+    "key_trends",
+    "strategic_recommendations"
+  ],
+  "title": "MarketReport",
+  "type": "object"
+}

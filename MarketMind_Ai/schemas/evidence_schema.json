@@ -1,0 +1,508 @@
+{
+  "$defs": {
+    "ClaimType": {
+      "enum": [
+        "pricing",
+        "feature",
+        "metric",
+        "limitation",
+        "general_trend"
+      ],
+      "title": "ClaimType",
+      "type": "string"
+    },
+    "CompanyComparison": {
+      "properties": {
+        "company_name": {
+          "title": "Company Name",
+          "type": "string"
+        },
+        "starting_price": {
+          "default": "Not verified in search evidence",
+          "title": "Starting Price",
+          "type": "string"
+        },
+        "pricing_model": {
+          "default": "Not verified in search evidence",
+          "title": "Pricing Model",
+          "type": "string"
+        },
+        "free_plan": {
+          "default": "Not verified in search evidence",
+          "title": "Free Plan",
+          "type": "string"
+        },
+        "target_audience": {
+          "default": "Not verified in search evidence",
+          "title": "Target Audience",
+          "type": "string"
+        },
+        "key_features": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Key Features",
+          "type": "array"
+        },
+        "strengths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Strengths",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "criteria_values": {
+          "additionalProperties": {
+            "$ref": "#/$defs/CriterionComparisonValue"
+          },
+          "description": "Criteria mapped to verified values",
+          "title": "Criteria Values",
+          "type": "object"
+        },
+        "source_urls": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Urls",
+          "type": "array"
+        },
+        "last_verified": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Verified"
+        }
+      },
+      "required": [
+        "company_name"
+      ],
+      "title": "CompanyComparison",
+      "type": "object"
+    },
+    "ConfidenceLevel": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "ConfidenceLevel",
+      "type": "string"
+    },
+    "CriterionComparisonValue": {
+      "properties": {
+        "criterion_name": {
+          "title": "Criterion Name",
+          "type": "string"
+        },
+        "value_text": {
+          "default": "Not verified",
+          "title": "Value Text",
+          "type": "string"
+        },
+        "is_verified": {
+          "default": false,
+          "title": "Is Verified",
+          "type": "boolean"
+        },
+        "billing_period": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Billing Period"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "USD",
+          "title": "Currency"
+        },
+        "usage_limits": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Usage Limits"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "source_urls": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Urls",
+          "type": "array"
+        }
+      },
+      "required": [
+        "criterion_name"
+      ],
+      "title": "CriterionComparisonValue",
+      "type": "object"
+    },
+    "EvidenceItem": {
+      "properties": {
+        "id": {
+          "description": "Unique Evidence ID, e.g., EV1",
+          "title": "Id",
+          "type": "string"
+        },
+        "claim_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Claim ID",
+          "title": "Claim Id"
+        },
+        "sub_question_id": {
+          "description": "Associated SubQuestion ID",
+          "title": "Sub Question Id",
+          "type": "string"
+        },
+        "entity": {
+          "default": "",
+          "description": "Target entity/competitor name, e.g., Klaviyo",
+          "title": "Entity",
+          "type": "string"
+        },
+        "criterion": {
+          "default": "",
+          "description": "Target criterion/metric, e.g., pricing plans",
+          "title": "Criterion",
+          "type": "string"
+        },
+        "claim_text": {
+          "description": "Extracted factual claim",
+          "title": "Claim Text",
+          "type": "string"
+        },
+        "claim_type": {
+          "$ref": "#/$defs/ClaimType",
+          "default": "feature",
+          "description": "Type of claim"
+        },
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceLevel",
+          "default": "high"
+        },
+        "confidence_score": {
+          "default": 1.0,
+          "description": "Numerical relevance score 0.0 to 1.0",
+          "title": "Confidence Score",
+          "type": "number"
+        },
+        "verbatim_quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Exact text quote from source",
+          "title": "Verbatim Quote"
+        },
+        "evidence_excerpt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Evidence excerpt supporting claim",
+          "title": "Evidence Excerpt"
+        },
+        "source_id": {
+          "description": "Source document name, URL, or ID",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Page title or document header",
+          "title": "Source Title"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Canonical Web URL if retrieved live",
+          "title": "Source Url"
+        },
+        "source_type": {
+          "default": "live_web",
+          "description": "local_corpus | live_web | official_site",
+          "title": "Source Type",
+          "type": "string"
+        },
+        "retrieval_method": {
+          "default": "live_web",
+          "description": "live_web | site_official_web | local_corpus",
+          "title": "Retrieval Method",
+          "type": "string"
+        },
+        "retrieved_at_utc": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "UTC Timestamp when evidence was fetched",
+          "title": "Retrieved At Utc"
+        },
+        "publication_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Publication date if available",
+          "title": "Publication Date"
+        },
+        "verification_status": {
+          "default": "verified",
+          "description": "verified | unverified | partially_supported",
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "rejection_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Reason if rejected during validation",
+          "title": "Rejection Reason"
+        }
+      },
+      "required": [
+        "id",
+        "sub_question_id",
+        "claim_text",
+        "source_id"
+      ],
+      "title": "EvidenceItem",
+      "type": "object"
+    },
+    "ResearchTraceEntry": {
+      "properties": {
+        "stage": {
+          "title": "Stage",
+          "type": "string"
+        },
+        "query": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Query"
+        },
+        "status": {
+          "title": "Status",
+          "type": "string"
+        },
+        "tool_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tool Name"
+        },
+        "results_count": {
+          "default": 0,
+          "title": "Results Count",
+          "type": "integer"
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message"
+        },
+        "timestamp_utc": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Timestamp Utc"
+        }
+      },
+      "required": [
+        "stage",
+        "status"
+      ],
+      "title": "ResearchTraceEntry",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "plan": {
+      "title": "Plan"
+    },
+    "evidence_items": {
+      "items": {
+        "$ref": "#/$defs/EvidenceItem"
+      },
+      "title": "Evidence Items",
+      "type": "array"
+    },
+    "rejected_evidence_items": {
+      "items": {
+        "$ref": "#/$defs/EvidenceItem"
+      },
+      "title": "Rejected Evidence Items",
+      "type": "array"
+    },
+    "comparisons": {
+      "items": {
+        "$ref": "#/$defs/CompanyComparison"
+      },
+      "title": "Comparisons",
+      "type": "array"
+    },
+    "research_trace": {
+      "items": {
+        "$ref": "#/$defs/ResearchTraceEntry"
+      },
+      "title": "Research Trace",
+      "type": "array"
+    },
+    "sources_used": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Sources Used",
+      "type": "array"
+    },
+    "iterations_used": {
+      "default": 0,
+      "title": "Iterations Used",
+      "type": "integer"
+    },
+    "tool_calls_count": {
+      "default": 0,
+      "title": "Tool Calls Count",
+      "type": "integer"
+    },
+    "total_cost_usd": {
+      "default": 0.0,
+      "title": "Total Cost Usd",
+      "type": "number"
+    },
+    "is_completed": {
+      "default": false,
+      "title": "Is Completed",
+      "type": "boolean"
+    },
+    "unresolved_questions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unresolved Questions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "run_id",
+    "plan"
+  ],
+  "title": "ResearchState",
+  "type": "object"
+}
