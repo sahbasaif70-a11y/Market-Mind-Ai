@@ -11,16 +11,38 @@ import NewResearchModal from './components/NewResearchModal';
 import ReportDetailView from './components/ReportDetailView';
 import HumanApprovalModal from './components/HumanApprovalModal';
 import KnowledgeBaseView from './components/KnowledgeBaseView';
+import LoginModal from './components/LoginModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isNewResearchOpen, setIsNewResearchOpen] = useState(false);
   const [isApprovalOpen, setIsApprovalOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const [user, setUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('marketmind_user');
+      return saved ? JSON.parse(saved) : { name: 'Ayesha', role: 'Student', apiKey: '' };
+    } catch (e) {
+      return { name: 'Ayesha', role: 'Student', apiKey: '' };
+    }
+  });
+
   const [selectedReport, setSelectedReport] = useState(null);
   const [reportsList, setReportsList] = useState([]);
   const [currentStepIndex, setCurrentStepIndex] = useState(2);
   const [isAgentRunning, setIsAgentRunning] = useState(false);
   const [notification, setNotification] = useState(null);
+
+  const handleSaveUser = (newUser) => {
+    setUser(newUser);
+    try {
+      localStorage.setItem('marketmind_user', JSON.stringify(newUser));
+    } catch (e) {
+      console.error(e);
+    }
+    setNotification({ type: 'success', text: `Profile updated for ${newUser.name} (${newUser.role})` });
+  };
 
   // Dynamic Report Builder for Clean Intent-Aware Domain Outputs
   const buildDynamicReport = (query, runId = 'run_' + Math.random().toString(16).substring(2, 10)) => {
@@ -264,13 +286,15 @@ export default function App() {
     const timer2 = setTimeout(() => setCurrentStepIndex(3), 1600);
     const timer3 = setTimeout(() => setCurrentStepIndex(4), 2400);
 
+    const effectiveApiKey = apiKey || user?.apiKey || null;
+
     try {
       const res = await fetch('http://localhost:8000/api/marketmind/research', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query,
-          api_key: apiKey || null,
+          api_key: effectiveApiKey,
           model: 'gpt-4o-mini',
         }),
       });
@@ -375,9 +399,13 @@ export default function App() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden relative z-10">
         {/* Sticky Header */}
-        <Header onSearchSubmit={(q) => {
-          handleRunResearch(q, null);
-        }} />
+        <Header
+          user={user}
+          onOpenLogin={() => setIsLoginOpen(true)}
+          onSearchSubmit={(q) => {
+            handleRunResearch(q, null);
+          }}
+        />
 
         {/* Global Notification Banner */}
         {notification && (
@@ -474,6 +502,14 @@ export default function App() {
         onClose={() => setIsApprovalOpen(false)}
         runId={selectedReport?.run_id || 'run_38423825'}
         onDecision={handleApprovalDecision}
+      />
+
+      {/* User Login & API Key Profile Modal */}
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        user={user}
+        onSaveUser={handleSaveUser}
       />
     </div>
   );

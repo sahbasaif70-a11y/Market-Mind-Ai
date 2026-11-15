@@ -122,6 +122,7 @@ class ResearchRequestPayload(BaseModel):
     api_key: Optional[str] = None
     model: Optional[str] = "gpt-4o-mini"
     max_iterations: Optional[int] = 10
+    use_crewai: Optional[bool] = False
 
 class ApprovalRequestPayload(BaseModel):
     run_id: str
@@ -149,6 +150,25 @@ async def start_marketmind_research(payload: ResearchRequestPayload):
         raise HTTPException(status_code=400, detail=f"LLM Client Initialization Error: {str(e)}")
 
     try:
+        if getattr(payload, "use_crewai", False):
+            print(f"[Backend Log] Executing via CrewAI Orchestrator for run_id={run_id}")
+            crew_engine = MarketMindCrew(user_query=payload.query)
+            crew_output = crew_engine.run_marketmind_hybrid()
+            run_id = crew_output["run_id"]
+            report_dict = crew_output["report"].model_dump()
+            markdown_text = crew_output["markdown"]
+
+            return {
+                "status": "success",
+                "success": True,
+                "run_id": run_id,
+                "query": payload.query,
+                "report": report_dict,
+                "report_markdown": markdown_text,
+                "quality_audit": crew_output.get("quality_audit"),
+                "orchestrator": "crewai"
+            }
+
         # Phase 2: Planning
         planner = ResearchPlanner(llm_client)
         plan = planner.create_plan(payload.query)

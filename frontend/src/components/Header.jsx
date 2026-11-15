@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Bell, Sun, ChevronDown } from 'lucide-react';
 
-export default function Header({ onSearchSubmit }) {
+export default function Header({ onSearchSubmit, user, onOpenLogin }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleKeyDown = (e) => {
@@ -9,6 +9,9 @@ export default function Header({ onSearchSubmit }) {
       onSearchSubmit(searchQuery);
     }
   };
+
+  const displayName = user?.name || 'Ayesha';
+  const displayRole = user?.role || 'Student';
 
   return (
     <header className="h-16 shrink-0 border-b border-[#0F3D30] px-6 flex items-center justify-between sticky top-0 z-30 bg-[#071B17]/95 backdrop-blur-xl">
@@ -41,20 +44,26 @@ export default function Header({ onSearchSubmit }) {
         {/* Vertical Divider */}
         <div className="h-6 w-[1px] bg-[#0F3D30]" />
 
-        {/* Profile Card */}
-        <div className="flex items-center gap-2.5 cursor-pointer group">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#3AD89A] via-[#D9B978] to-[#42E6A4] p-0.5 shadow-md shrink-0">
+        {/* Profile Card (Clickable to open Login / Profile Modal) */}
+        <div
+          onClick={onOpenLogin}
+          title="Click to edit profile or set OpenAI API key"
+          className="flex items-center gap-2.5 cursor-pointer group bg-[#051C16]/80 hover:bg-[#092B21] border border-[#0F3D30] hover:border-[#3AD89A]/60 px-3 py-1.5 rounded-2xl transition-all"
+        >
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#3AD89A] via-[#D9B978] to-[#42E6A4] p-0.5 shadow-md shrink-0">
             <div className="w-full h-full rounded-full bg-[#071B17] flex items-center justify-center overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
-                alt="Ayesha Profile"
+                alt="Profile Avatar"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
           <div className="text-left hidden sm:block">
-            <h4 className="text-xs font-bold text-warm-ivory group-hover:text-[#3AD89A] transition-colors leading-tight">Ayesha</h4>
-            <p className="text-[10px] text-[#8E9F97] font-semibold">Student</p>
+            <h4 className="text-xs font-bold text-warm-ivory group-hover:text-[#3AD89A] transition-colors leading-tight">
+              {displayName}
+            </h4>
+            <p className="text-[10px] text-[#8E9F97] font-semibold">{displayRole}</p>
           </div>
           <ChevronDown className="w-3.5 h-3.5 text-[#8E9F97] group-hover:text-warm-ivory transition-colors" />
         </div>

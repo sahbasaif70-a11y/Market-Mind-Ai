@@ -1,7 +1,11 @@
-streamlit
 fastapi
 uvicorn
 python-multipart
+openai>=1.30.0
+pydantic>=2.7.0
+python-dotenv>=1.0.1
+rich>=13.7.0
+crewai>=0.28.0
 langchain
 langchain-openai
 langchain-community
@@ -10,4 +14,4 @@ faiss-cpu
 pypdf
 pandas
 openpyxl
-python-dotenv
+pytest>=8.0.0
