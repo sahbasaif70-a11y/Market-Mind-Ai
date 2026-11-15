@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Upload, FileText, CheckCircle2, RefreshCw, Database } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://market-mind-ai-yixa.onrender.com';
+
+
 export default function KnowledgeBaseView() {
   const [corpusFiles, setCorpusFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
