@@ -13,6 +13,9 @@ import HumanApprovalModal from './components/HumanApprovalModal';
 import KnowledgeBaseView from './components/KnowledgeBaseView';
 import LoginModal from './components/LoginModal';
 
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://market-mind-ai-yixa.onrender.com';
+
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isNewResearchOpen, setIsNewResearchOpen] = useState(false);
