@@ -270,7 +270,7 @@ export default function ResearchWorkflow({ activeStep = 3 }) {
   ];
 
   return (
-    <div className="h-full relative rounded-3xl p-6 sm:p-7 bg-gradient-to-b from-[#061D16] via-[#041510] to-[#020B08] border border-[#0F3D30] shadow-[0_15px_40px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col justify-between">
+    <div className="h-full relative rounded-3xl p-4 sm:p-6 md:p-7 bg-gradient-to-b from-[#061D16] via-[#041510] to-[#020B08] border border-[#0F3D30] shadow-[0_15px_40px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col justify-between">
       {/* Top Ambient Glow Effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-28 bg-gradient-to-b from-emerald-500/15 via-emerald-500/5 to-transparent blur-2xl pointer-events-none" />
 

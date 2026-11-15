@@ -63,8 +63,8 @@ export default function MetricsFooter() {
       {/* Bottom Gold Ambient Sheen */}
       <div className="absolute -bottom-4 -left-4 w-36 h-14 bg-champagne-gold/10 rounded-full blur-xl pointer-events-none" />
 
-      {/* Content-based Flexible Horizontal Container */}
-      <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-3 gap-x-1 sm:gap-x-2">
+      {/* Content-based Flexible Container */}
+      <div className="grid grid-cols-2 sm:flex sm:flex-nowrap items-center justify-between gap-3 sm:gap-2">
         {metrics.map((metric, idx) => (
           <React.Fragment key={idx}>
             <div className="flex items-center gap-2 sm:gap-2.5 px-1 sm:px-2 py-0.5 group cursor-default shrink-0">
@@ -72,11 +72,11 @@ export default function MetricsFooter() {
               <OrbIconBadge>{metric.icon}</OrbIconBadge>
 
               {/* Label & Value */}
-              <div className="flex flex-col">
-                <span className="text-xs sm:text-[13px] font-bold text-warm-ivory tracking-tight whitespace-nowrap">
+              <div className="flex flex-col min-w-0">
+                <span className="text-xs sm:text-[13px] font-bold text-warm-ivory tracking-tight truncate">
                   {metric.value}
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-[#8E9F97] font-normal leading-tight whitespace-nowrap">
+                <span className="text-[10px] sm:text-[11px] text-[#8E9F97] font-normal leading-tight truncate">
                   {metric.label}
                 </span>
               </div>

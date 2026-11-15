@@ -31,7 +31,7 @@ export default function DashboardHero({ onStartNewResearch }) {
   ];
 
   return (
-    <div className="h-full relative rounded-3xl p-6 md:p-7 bg-gradient-to-b from-[#061D16] via-[#041510] to-[#020B08] border border-[#0F3D30] shadow-[0_15px_45px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col justify-between">
+    <div className="h-full relative rounded-3xl p-4 sm:p-6 md:p-7 bg-gradient-to-b from-[#061D16] via-[#041510] to-[#020B08] border border-[#0F3D30] shadow-[0_15px_45px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col justify-between">
       {/* Background Radial Ambient Glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-radial from-emerald-500/15 via-emerald-900/10 to-transparent blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-radial from-champagne-gold/15 via-champagne-gold/5 to-transparent blur-3xl pointer-events-none" />

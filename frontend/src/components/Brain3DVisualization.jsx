@@ -3,7 +3,7 @@ import { Search, Scale } from 'lucide-react';
 
 export default function Brain3DVisualization() {
   return (
-    <div className="relative w-full h-[370px] sm:h-[400px] flex items-center justify-center select-none overflow-hidden rounded-3xl p-3">
+    <div className="relative w-full h-[300px] xs:h-[350px] sm:h-[400px] flex items-center justify-center select-none overflow-hidden rounded-3xl p-3">
       {/* Background Radial Emerald & Gold Ambient Glow */}
       <div className="absolute inset-0 bg-radial from-emerald-500/20 via-emerald-950/10 to-transparent blur-3xl pointer-events-none" />
       <div className="absolute bottom-4 w-80 h-36 bg-champagne-gold/20 rounded-full blur-2xl pointer-events-none" />

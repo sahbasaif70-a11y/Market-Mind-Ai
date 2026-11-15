@@ -18,6 +18,7 @@ export default function App() {
   const [isNewResearchOpen, setIsNewResearchOpen] = useState(false);
   const [isApprovalOpen, setIsApprovalOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [user, setUser] = useState(() => {
     try {
@@ -389,11 +390,24 @@ export default function App() {
       {/* Global Glowing Emerald & Gold Background Ambient Atmosphere */}
       <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_top_right,rgba(66,230,164,0.12),transparent_60%),radial-gradient(ellipse_at_bottom_left,rgba(217,185,120,0.1),transparent_60%),radial-gradient(circle_at_center,rgba(4,25,19,0.95),#020B08)]" />
 
-      {/* Persistent Left Sidebar */}
+      {/* Mobile Drawer Backdrop Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 bg-black/75 backdrop-blur-sm z-40 md:hidden transition-opacity"
+        />
+      )}
+
+      {/* Left Sidebar (Drawer on mobile, static on desktop) */}
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        onStartNewResearch={() => setIsNewResearchOpen(true)}
+        onStartNewResearch={() => {
+          setIsNewResearchOpen(true);
+          setIsMobileMenuOpen(false);
+        }}
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
       />
 
       {/* Main Content Area */}
@@ -405,6 +419,7 @@ export default function App() {
           onSearchSubmit={(q) => {
             handleRunResearch(q, null);
           }}
+          onToggleMobileMenu={() => setIsMobileMenuOpen((prev) => !prev)}
         />
 
         {/* Global Notification Banner */}
@@ -418,7 +433,7 @@ export default function App() {
         )}
 
         {/* Main Body View Switching */}
-        <main className="flex-1 p-5 sm:p-6 overflow-y-auto space-y-6 relative z-10">
+        <main className="flex-1 p-3.5 sm:p-6 overflow-y-auto space-y-4 sm:space-y-6 relative z-10">
           {activeTab === 'dashboard' && (
             <div className="space-y-6 max-w-[1600px] mx-auto">
               {/* ROW 1: Hero Section (8 cols) + Live Research Activity (4 cols) */}
